@@ -1,0 +1,12 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Duplicate Guard - prevents forbidden filename patterns
+echo "🔍 Running duplicate guard check..."
+npx tsx scripts/duplicate-scan.ts --fail-on-dup
+
+# Lint check
+echo "🧹 Running lint check..."
+npm run lint
+
+echo "✅ Pre-commit checks passed!"
